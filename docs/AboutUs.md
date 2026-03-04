@@ -58,4 +58,5 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/hwangjihun.md)]
 
 * Role: Developer
-* Responsibilities: Code Quality + Storage
+* Project Responsibilities: In charge of Storage Component
+* Development Responsibilities: Code Quality
