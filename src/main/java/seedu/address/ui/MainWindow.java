@@ -204,6 +204,7 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isShowHelp()) {
                 openUserGuide();
+                resultDisplay.setFeedbackToUser("Opened user guide in browser.");
             }
 
             if (commandResult.isExit()) {
