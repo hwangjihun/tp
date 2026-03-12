@@ -25,9 +25,9 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class MainWindow extends UiPart<Stage> {
 
     private static final String FXML = "MainWindow.fxml";
-    public static final String HOMEPAGE_URL = "https://ay2526s2-cs2103-f13-1.github.io/tp";
-    public static final String USERGUIDE_URL = HOMEPAGE_URL + "/UserGuide.html";
-    public static final String DEVELOPERGUIDE_URL = HOMEPAGE_URL + "/DeveloperGuide.html";
+    private static final String HOMEPAGE_URL = "https://ay2526s2-cs2103-f13-1.github.io/tp";
+    private static final String USERGUIDE_URL = HOMEPAGE_URL + "/UserGuide.html";
+    private static final String DEVELOPERGUIDE_URL = HOMEPAGE_URL + "/DeveloperGuide.html";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
