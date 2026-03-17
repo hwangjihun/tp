@@ -1,6 +1,7 @@
 package seedu.address.model;
-import java.util.List;
 import static java.util.Objects.requireNonNull;
+
+import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
