@@ -36,17 +36,31 @@ public class DeleteCommand extends Command {
         requireNonNull(model);
         List<Gamer> lastShownList = model.getFilteredPersonList();
 
-        if (lastShownList.isEmpty()) {
+        validateDeleteIndex(lastShownList);
+
+        int index = targetIndex.getZeroBased();
+        assert index < lastShownList.size();
+
+        Gamer gamerToDelete = lastShownList.get(index);
+        model.deletePerson(gamerToDelete);
+        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.format(gamerToDelete)));
+    }
+
+    /**
+     * Validates whether the target index refers to a valid gamer in the given list.
+     *
+     * @param gamerList The currently displayed list of gamers.
+     * @throws CommandException If the list is empty or if the index is out of range.
+     */
+    private void validateDeleteIndex(List<Gamer> gamerList) throws CommandException {
+        if (gamerList.isEmpty()) {
             throw new CommandException(Messages.MESSAGE_EMPTY_CONTACT_LIST);
         }
 
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
+        int index = targetIndex.getZeroBased();
+        if (index >= gamerList.size()) {
             throw new CommandException(Messages.MESSAGE_INDEX_OUT_OF_RANGE);
         }
-
-        Gamer gamerToDelete = lastShownList.get(targetIndex.getZeroBased());
-        model.deletePerson(gamerToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.format(gamerToDelete)));
     }
 
     @Override
