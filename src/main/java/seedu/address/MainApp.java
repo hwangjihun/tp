@@ -15,6 +15,7 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.BlockBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -45,6 +46,8 @@ public class MainApp extends Application {
     protected Model model;
     protected Config config;
 
+    protected String storageInitMessage = "Gamer Contacts successfully loaded.";
+
     @Override
     public void init() throws Exception {
         logger.info("=============================[ Initializing BlockBook ]===========================");
@@ -66,9 +69,9 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
-     * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
-     * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
+     * Returns a {@code ModelManager} with the data from {@code storage}'s block book contacts.json
+     * and {@code userPrefs}. <br>
+     * or an empty block book data will be used instead if errors occur when reading {@code storage}'s block book data.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
         logger.info("Using data file : " + storage.getBlockBookFilePath());
@@ -80,11 +83,23 @@ public class MainApp extends Application {
             if (!addressBookOptional.isPresent()) {
                 logger.info("Creating a new data file " + storage.getBlockBookFilePath()
                         + " populated with a sample AddressBook.");
+
+                // Shows content on resultDisplay
+                CommandResult message = new CommandResult(
+                        "No save file found! Starting with an empty Gamer Contact list!", false, false);
+                storageInitMessage = message.getFeedbackToUser();
             }
             initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getBlockBookFilePath() + " could not be loaded."
-                    + " Will be starting with an empty AddressBook.");
+                    + " Will be starting with an empty Gamer Contact list instead!");
+
+            // Shows content on resultDisplay
+            CommandResult message = new CommandResult(
+                    "Data file at " + storage.getBlockBookFilePath() + " could not be loaded."
+                            + "\nWill be starting with an empty Gamer Contact list instead!", false, false);
+            storageInitMessage = message.getFeedbackToUser();
+
             initialData = new BlockBook();
         }
 
@@ -171,6 +186,9 @@ public class MainApp extends Application {
         ui = new UiManager(logic, getHostServices());
         logger.info("Starting BlockBook " + MainApp.VERSION);
         ui.start(primaryStage);
+
+        // Placement in start() sure that ui is instantiated before message is shown
+        ui.showMessage(storageInitMessage);
     }
 
     @Override
