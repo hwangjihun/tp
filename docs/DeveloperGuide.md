@@ -1,8 +1,7 @@
-﻿---
-  layout: default.md
+﻿  layout: default.md
   title: "Developer Guide"
   pageNav: 3
----
+
 
 # BlockBook Developer Guide
 
