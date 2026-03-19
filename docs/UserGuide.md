@@ -80,16 +80,16 @@ Format: `help`
 
 Adds a Gamer to BlockBook.
 
-Format: `add name/NAME gamertag/GAMERTAG e/EMAIL a/ADDRESS [t/TAG]`
+Format: `add name/NAME gamertag/GAMERTAG`
 
 <box type="tip" seamless>
 
-**Tip:** A Gamer can have any number of tags (including 0)
+**Tip:** Both `name/` and `gamertag/` parameters are required.
 </box>
 
 Examples:
-* `add name/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add name/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+* `add name/John Doe gamertag/JohnThePro`
+* `add name/Betsy Crowe gamertag/ShadowCrowe`
 
 ### Listing all gamers : `list`
 
