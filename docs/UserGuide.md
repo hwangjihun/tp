@@ -97,14 +97,14 @@ Shows a list of all gamers stored in BlockBook.
 
 Format: `list`
 
-### Editing a Gamer : `edit`
+### Editing a gamer : `edit`
 
 Edits an existing Gamer stored in BlockBook.
 **TAKE NOTE!** This command does not allow the editing of fields that do not exist, such as `p/`, `e/`, `a/` etc. These fields are a work in progress.
 
 Format: `edit INDEX [name/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]`
 
-* Edits the Gamer at the specified `INDEX`. The index refers to the index number shown in the displayed Gamer list. The index **must be a positive integer** 1, 2, 3, 
+* Edits the gamer at the specified `INDEX`. The index refers to the index number shown in the displayed gamer list. The index **must be a positive integer** 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the Gamer will be removed i.e adding of tags is not cumulative.
